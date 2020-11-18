@@ -7,5 +7,11 @@ const useStyles = makeStyles((theme: any) => ({
   title: {
     flexGrow: 1,
   },
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: "auto",
+  },
 }));
 export default useStyles;

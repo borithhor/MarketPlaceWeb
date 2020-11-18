@@ -91,11 +91,6 @@ export function AppliedRoute({ component: C, props: cProps, ...rest }: any) {
 
 export function PermissionRoute(props: any) {
   const { currentUser } = props.props;
-  console.log("currentUser:::", currentUser);
-  // if (props.permission && props.permission(currentUser)) {
-  //   return <AppliedRoute {...props} />;
-  // }
-
   if (currentUser.isAuthenticated) {
     return <AuthenticatedRoute {...props} />;
   }
