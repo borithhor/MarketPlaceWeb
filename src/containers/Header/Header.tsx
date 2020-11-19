@@ -2,26 +2,26 @@ import React from "react";
 import {
   AppBar,
   Toolbar,
-  Typography,
-  Button,
   IconButton,
   Container,
   List,
   ListItem,
-  ListItemIcon,
+  Divider,
   ListItemText,
   Drawer,
 } from "@material-ui/core/";
 import MenuIcon from "@material-ui/icons/Menu";
 import useStyles from "./styles";
 import clsx from "clsx";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import Logo from "./../../images/logo/logo.png";
+import { useHistory } from "react-router-dom";
 
 type Anchor = "left";
+const Menu = ["Shops", "Products"];
 
 const Header: React.FC = React.memo(() => {
   const classes = useStyles();
+  let history = useHistory();
   const [state, setState] = React.useState({
     left: false,
   });
@@ -38,6 +38,18 @@ const Header: React.FC = React.memo(() => {
 
     setState({ ...state, [anchor]: open });
   };
+  const handleLogoClick = () => {
+    history.push("/");
+  };
+  const handleSelect = (text: string) => {
+    console.log("======", text);
+    if (text === "Shops") {
+      history.push("/shops");
+    }
+    if (text === "Products") {
+      history.push("/products");
+    }
+  };
   const list = (anchor: Anchor) => (
     <div
       className={clsx(classes.list)}
@@ -45,35 +57,50 @@ const Header: React.FC = React.memo(() => {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      <div className={classes.logoWrapper}>
+        <img
+          src={Logo}
+          alt="Logo"
+          className={classes.drawerLogo}
+          onClick={() => handleLogoClick()}
+        />
+      </div>
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        {Menu.map((text, index) => (
+          <React.Fragment key={index}>
+            <Divider />
+            <ListItem
+              button
+              className={classes.listItem}
+              onClick={() => handleSelect(text)}
+            >
+              <ListItemText primary={text} />
+            </ListItem>
+          </React.Fragment>
         ))}
       </List>
     </div>
   );
   return (
-    <AppBar position="static" color="transparent">
+    <AppBar position="static" color="transparent" elevation={0}>
       <Container maxWidth="lg">
         <Toolbar>
           <IconButton
             edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="menu"
             onClick={toggleDrawer("left", true)}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            ZInation
-          </Typography>
-          {/* <Button color="inherit">Login</Button> */}
+          <div className={classes.logoWrapper}>
+            <img
+              src={Logo}
+              alt="Logo"
+              className={classes.logo}
+              onClick={() => handleLogoClick()}
+            />
+          </div>
         </Toolbar>
       </Container>
       <Drawer
