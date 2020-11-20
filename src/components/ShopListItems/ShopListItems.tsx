@@ -7,14 +7,11 @@ import {
   Divider,
   Button,
 } from "@material-ui/core/";
-import useStyles from "./styles";
 
 interface Props {
   items: any;
 }
 const ShopListItems: React.FC<Props> = React.memo((props: Props) => {
-  const classes = useStyles();
-  const { items } = props;
   const country = "Canada";
   const state = "Otawa";
 
