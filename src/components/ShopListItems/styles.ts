@@ -9,24 +9,6 @@ const useStyles = makeStyles((theme: any) => ({
     paddingTop: 10,
     paddingBottom: 10,
   },
-  searchWrapper:{
-    width:'100%',
-    position: 'relative',
-  },
-  searchContent:{
-    position: 'absolute',
-    width: '100%',
-    maxHeight: 300,
-    zIndex: 5,
-    borderRadius: 10,
-    backgroundColor: '#F4F5FA',
-  },
-  searchNoFound: {
-    height: 100,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   boxOption:{
     cursor: 'pointer',
   },
@@ -39,13 +21,6 @@ const useStyles = makeStyles((theme: any) => ({
   },
   searchIcon:{
     color: '#DADADA'
-  },
-  clearIcon: {
-    cursor: 'pointer',
-    color: '#DADADA',
-    '&:hover':{
-      color: '#DC004E',
-    }
   },
 }));
 export default useStyles;

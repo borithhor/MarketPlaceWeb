@@ -1,5 +1,9 @@
 import {makeStyles} from '@material-ui/core/styles';
 const useStyles = makeStyles((theme: any) => ({
+  container:{
+    paddingLeft: 0,
+    paddingRight: 0
+  },
   logoWrapper:{
     margin: "auto",
   },

@@ -11,13 +11,14 @@ const useStyles = makeStyles((theme: any) => ({
   CardImg:{
     width: '100%',
     opacity: 0.9,
+    borderRadius: 10,
   },
   boxContent:{
     position: 'absolute',
     zIndex: 2,
     bottom: 0,
     top: '10%',
-    width: '100%',
+    width: '90%',
   },
   cardTitle:{
     color: 'white',

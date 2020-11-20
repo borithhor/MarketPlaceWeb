@@ -42,7 +42,6 @@ const Header: React.FC = React.memo(() => {
     history.push("/");
   };
   const handleSelect = (text: string) => {
-    console.log("======", text);
     if (text === "Shops") {
       history.push("/shops");
     }
@@ -83,7 +82,7 @@ const Header: React.FC = React.memo(() => {
   );
   return (
     <AppBar position="static" color="transparent" elevation={0}>
-      <Container maxWidth="lg">
+      <Container className={classes.container} maxWidth="lg">
         <Toolbar>
           <IconButton
             edge="start"

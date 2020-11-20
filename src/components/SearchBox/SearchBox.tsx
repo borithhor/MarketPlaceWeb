@@ -2,31 +2,39 @@ import React from "react";
 import {
   TextField,
   InputAdornment,
-  Popover,
   Container,
+  Typography,
+  Box,
 } from "@material-ui/core/";
 import useStyles from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
+import ClearIcon from "@material-ui/icons/Clear";
 
 const SearchBox: React.FC = React.memo(() => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null
-  );
-
-  const handleChange = (event: any) => {
-    setAnchorEl(event.currentTarget);
-    console.log("-=-======", event.currentTarget);
+  const searchOption = ["Shops", "Products"];
+  const [option, setOption] = React.useState("Shops");
+  const handleChangeOption = (option: string) => {
+    setOption(option);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
   return (
     <Container maxWidth="sm" className={classes.container}>
+      <div className={classes.searchOptionWrapper}>
+        {searchOption.map((text, index) => (
+          <Box
+            key={index}
+            mx={index === 1 ? 2 : 0}
+            onClick={() => handleChangeOption(text)}
+            borderBottom={text === option ? 2 : 0}
+            className={
+              text === option ? classes.optionBorderActive : classes.boxOption
+            }
+          >
+            <Typography>{text}</Typography>
+          </Box>
+        ))}
+      </div>
       <TextField
         id="outlined-basic"
         variant="outlined"
@@ -34,31 +42,24 @@ const SearchBox: React.FC = React.memo(() => {
         label=""
         fullWidth={true}
         placeholder="Search..."
-        onChange={handleChange}
         InputProps={{
-          endAdornment: (
+          startAdornment: (
             <InputAdornment position="start">
               <SearchIcon className={classes.searchIcon} />
             </InputAdornment>
           ),
+          endAdornment: (
+            <InputAdornment position="start">
+              <ClearIcon className={classes.clearIcon} />
+            </InputAdornment>
+          ),
         }}
       />
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        <div>Hello</div>
-      </Popover>
+      <div className={classes.searchWrapper}>
+        <div className={classes.searchContent}>
+          <div className={classes.searchNoFound}>No results found!</div>
+        </div>
+      </div>
     </Container>
   );
 });
