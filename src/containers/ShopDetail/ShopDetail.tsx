@@ -123,34 +123,6 @@ const ShopDetail: React.FC = React.memo(() => {
               onChangeRowsPerPage={handleChangeRowsPerPage}
             />
           </Paper>
-          <Paper className={classes.contactWrapper}>
-            <Box>
-              <Typography variant="button">Contact Us</Typography>
-            </Box>
-            <List className={classes.listWrapper}>
-              <ListItem button component="a" href="/">
-                <ListItemIcon>
-                  <WebIcon />
-                </ListItemIcon>
-                <ListItemText primary="Website" />
-              </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <PhoneInTalkIcon />
-                </ListItemIcon>
-                <ListItemText primary="(418) 670-9794" />
-              </ListItem>
-            </List>
-            <Box px={5}>
-              <Typography variant="button">Shop Name</Typography>
-              <Box py={2}>
-                <Typography variant="body2">
-                  1702 Notre-Dame Street L'ancienne-lorette, QC G2E3B8
-                </Typography>
-                <Typography variant="body2">Ottawa,Canada</Typography>
-              </Box>
-            </Box>
-          </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Paper className={classes.contactWrapper}>
