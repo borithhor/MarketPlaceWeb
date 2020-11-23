@@ -15,7 +15,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { ShopListItems } from "./../../components";
 import Pagination from "@material-ui/lab/Pagination";
-
 import useStyles from "./styles";
 
 const ShopLists: React.FC = React.memo(() => {

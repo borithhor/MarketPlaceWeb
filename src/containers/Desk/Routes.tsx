@@ -5,6 +5,7 @@ import { PermissionRoute, NotFound, LoaderRotate } from "../../components";
 const Home = React.lazy(() => import("./../Home"));
 const ShopLists = React.lazy(() => import("./../ShopLists"));
 const Products = React.lazy(() => import("./../Products"));
+const ShopDetail = React.lazy(() => import("./../ShopDetail"));
 interface Props {
   childProps: any;
 }
@@ -19,6 +20,12 @@ const Routes = (props: Props) => {
           path="/shops"
           props={childProps}
           component={ShopLists}
+        />
+        <PermissionRoute
+          exact
+          path="/shop-detail"
+          props={childProps}
+          component={ShopDetail}
         />
         <PermissionRoute
           exact

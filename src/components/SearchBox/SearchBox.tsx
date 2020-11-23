@@ -9,15 +9,33 @@ import {
 import useStyles from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
 import ClearIcon from "@material-ui/icons/Clear";
+import { clearTimeout } from "timers";
 
 const SearchBox: React.FC = React.memo(() => {
   const classes = useStyles();
   const searchOption = ["Shops", "Products"];
   const [option, setOption] = React.useState("Shops");
+  const [isVisible, setIsVisible] = React.useState(false);
+  const [value, setValue] = React.useState("");
   const handleChangeOption = (option: string) => {
     setOption(option);
   };
-
+  const validCheck = () => true;
+  const handleChange = (e: any) => {
+    let timeout: any;
+    clearTimeout(timeout);
+    const v = e.target.value;
+    setValue(v);
+    timeout = setTimeout(() => {
+      if (validCheck()) {
+        setIsVisible(true);
+      }
+    }, 1000);
+  };
+  const handleClear = () => {
+    setValue("");
+    setIsVisible(false);
+  };
   return (
     <Container maxWidth="sm" className={classes.container}>
       <div className={classes.searchOptionWrapper}>
@@ -40,8 +58,10 @@ const SearchBox: React.FC = React.memo(() => {
         variant="outlined"
         size="small"
         label=""
+        value={value}
         fullWidth={true}
         placeholder="Search..."
+        onChange={(e: any) => handleChange(e)}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -50,16 +70,21 @@ const SearchBox: React.FC = React.memo(() => {
           ),
           endAdornment: (
             <InputAdornment position="start">
-              <ClearIcon className={classes.clearIcon} />
+              <ClearIcon
+                className={classes.clearIcon}
+                onClick={() => handleClear()}
+              />
             </InputAdornment>
           ),
         }}
       />
-      <div className={classes.searchWrapper}>
-        <div className={classes.searchContent}>
-          <div className={classes.searchNoFound}>No results found!</div>
+      {isVisible && (
+        <div className={classes.searchWrapper}>
+          <div className={classes.searchContent}>
+            <div className={classes.searchNoFound}>No results found!</div>
+          </div>
         </div>
-      </div>
+      )}
     </Container>
   );
 });

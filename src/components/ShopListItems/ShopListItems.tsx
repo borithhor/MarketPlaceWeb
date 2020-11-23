@@ -7,6 +7,7 @@ import {
   Divider,
   Button,
 } from "@material-ui/core/";
+import { useHistory } from "react-router-dom";
 // import useStyles from "./styles";
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
 const ShopListItems: React.FC<Props> = React.memo((props: Props) => {
   // const classes = useStyles();
   // const { items } = props;
+  const history = useHistory();
   const country = "Canada";
   const state = "Otawa";
 
@@ -33,7 +35,12 @@ const ShopListItems: React.FC<Props> = React.memo((props: Props) => {
                 </React.Fragment>
               }
             />
-            <Button variant="outlined" size="small" color="primary" href="#">
+            <Button
+              variant="outlined"
+              size="small"
+              color="primary"
+              onClick={() => history.push("/shop-detail")}
+            >
               View
             </Button>
           </ListItem>
