@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme: any) => ({
 		marginTop: 20,
 	},
 	listWrapper:{
-		maxHeight: 400,
 		overflow: 'auto',
 	},
 	paginationWrapper:{

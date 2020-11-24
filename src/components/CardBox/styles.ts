@@ -7,6 +7,14 @@ const useStyles = makeStyles((theme: any) => ({
     position: 'relative',
     borderRadius: 10,
     cursor: 'pointer',
+    '&:hover':{
+      "& $cardTitle":{
+        color: '#24B1ED'
+      },
+      "& $cardSubtitle":{
+        color: '#24B1ED'
+      }
+    }
   },
   CardImg:{
     width: '100%',
@@ -23,9 +31,6 @@ const useStyles = makeStyles((theme: any) => ({
   cardTitle:{
     color: 'white',
     fontWeight: 500,
-    '&:hover':{
-      color: '#24B1ED',
-    }
   },
   cardSubtitle:{
     color: 'white',
